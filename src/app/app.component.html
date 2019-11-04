@@ -1,0 +1,40 @@
+﻿<div class="main-container">
+  <div class="alert alert-app-level"></div>
+  <header class="header-6">
+    <div class="branding">
+      <a href="/" class="nav-link">
+        <clr-icon shape="nodes" class="is-inverse"></clr-icon>
+        <span class="title">Api Gateway</span>
+      </a>
+    </div>
+    <div class="header-nav">
+      <a routerLink="/" class="nav-link nav-text" [ngClass]="{'active': this.router.url === '/'}" >Projects</a>
+      <a *ngIf="isAdmin" routerLink="/users" class="nav-link nav-text" [ngClass]="{'active': this.router.url === '/users'}">Users</a>
+    </div>
+    <div class="header-actions">
+        <span *ngIf="userFromApi" class="nav-link" >{{userFromApi.firstName}} {{userFromApi.lastName}}</span>
+        <a (click)="logout()" class="nav-link nav-icon">
+          <clr-icon shape="logout"></clr-icon>
+      </a>
+    </div>
+  </header>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- nav
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Projects</a>
+        <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin Area</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="text-center mt-4">
+</div> -->

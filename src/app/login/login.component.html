@@ -1,0 +1,56 @@
+﻿<form clrForm [formGroup]="loginForm">
+  <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+    <h3 class="modal-title">
+        <header class="header-6">
+            <div class="branding">
+              <a>
+                <clr-icon shape="nodes" class="is-inverse"></clr-icon>
+                <span class="title">Api Gateway</span>
+              </a>
+            </div>
+          </header>
+          <div class="alert alert-danger" *ngIf="submitted && error">
+              <div class="alert-items">
+                  <div class="alert-item static">
+                      <div class="alert-icon-wrapper">
+                          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                      </div>
+                      <span class="alert-text">{{error}}</span>
+                  </div>
+              </div>
+          </div>
+        </h3>
+    <div class="modal-body" style="padding: 10px .125rem">
+        <clr-input-container>
+          <label>Username</label>
+          <input
+            clrInput
+            placeholder="Username"
+            formControlName="username"
+            name="input"
+          />
+          <clr-control-error *ngIf="submitted && f.username.errors">
+            <span *ngIf="f.username.errors.required">Username is required</span>
+          </clr-control-error>
+        </clr-input-container>
+        <clr-input-container>
+          <label>Password</label>
+          <input
+            clrInput
+            placeholder="Password"
+            formControlName="password"
+            name="input"
+            type="password"
+          />
+          <clr-control-error *ngIf="submitted && f.password.errors">
+            <span *ngIf="f.password.errors.required">Password is required</span>
+          </clr-control-error>
+        </clr-input-container>
+      </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="submit" (click)="onSubmit()">
+        Login
+      </button>
+    </div>
+  </clr-modal>
+</form>
